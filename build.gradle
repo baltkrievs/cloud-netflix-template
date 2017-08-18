@@ -1,0 +1,12 @@
+allprojects {
+    buildscript {
+        
+    }
+}
+
+def rootDir = buildscript.sourceFile.parentFile
+
+subprojects {
+
+	 dependencies {}
+}
