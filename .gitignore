@@ -1,0 +1,59 @@
+# common ignore
+*~
+MANIFEST.MF
+target/
+tmp/
+build/
+install/
+
+# Package Files #
+*.jar
+!**/lib/*.jar
+*.war
+
+# eclipse specific
+.settings
+.project
+.classpath
+.metadata
+
+# idea specific
+.idea/**/*.xml
+.idea/dictionaries
+.idea/inspectionProfiles
+.idea/libraries
+.idea/modules
+.idea
+!.idea/codeStyleSettings.xml
+*.iml
+*.ipr
+*.iws
+
+# gradle specific
+.gradle/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# unix specific
+.DS_Store
+.directory
+
+# static plugins
+.pmd
+
+# log files
+*.log
+*.csv
+*.txt
+
+# explicit ehcache working directories exclusion
+/cache
+
+docker/ssh
+
+out
+!gradle/wrapper/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
