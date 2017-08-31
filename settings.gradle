@@ -1,0 +1,3 @@
+rootProject.name = 'cloud-netflix-template'
+include 'gateway'
+include 'microservice', 'service-discovery'

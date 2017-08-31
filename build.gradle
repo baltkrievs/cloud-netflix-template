@@ -6,6 +6,8 @@ allprojects {
 
 def rootDir = buildscript.sourceFile.parentFile
 
+apply from: "$rootDir/gradle/idea.gradle"
+
 subprojects {
 
 	 dependencies {}
