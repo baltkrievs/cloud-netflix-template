@@ -1,6 +1,6 @@
-package com.example.microservice.rest;
+package com.example.security.rest;
 
-import com.example.microservice.domain.Customer;
+import com.example.security.domain.Customer;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

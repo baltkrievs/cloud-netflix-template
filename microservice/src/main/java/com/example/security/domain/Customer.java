@@ -1,4 +1,4 @@
-package com.example.microservice.domain;
+package com.example.security.domain;
 
 /**
  * Created by Peter_Szanto on 6/13/2016.
