@@ -1,8 +1,6 @@
 package com.example.security.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Labotsky A.V. on 9/23/17.
@@ -19,6 +17,9 @@ public class Role {
 	@Id
 	private Integer id;
 	private String name;
+	@OneToOne(mappedBy = "role")
+	@PrimaryKeyJoinColumn
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -36,8 +37,16 @@ public class Role {
 		this.name = name;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + "]";
+		return "Role [id=" + id + ", name=" + name /*+ ", user=" + user + "]"*/;
 	}
 }

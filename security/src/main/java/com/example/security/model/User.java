@@ -1,8 +1,6 @@
 package com.example.security.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Labotsky A.V. on 9/23/17.
@@ -21,13 +19,9 @@ public class User {
 	private String name;
 	private String pass;
 	private String email;
-	// @OneToOne
-	// @JoinTable(name = "user_role", joinColumns = {
-	// @JoinColumn(name = "idUser", nullable = false, referencedColumnName = "id")
-	// }, inverseJoinColumns = {
-	// @JoinColumn(name = "idRole", nullable = false, referencedColumnName = "id")
-	// })
-	// private Role role;
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Role role;
 
 	public Integer getId() {
 		return id;
@@ -61,17 +55,17 @@ public class User {
 		this.pass = pass;
 	}
 
-	// public Role getRole() {
-	// return role;
-	// }
-	//
-	// public void setRole(Role role) {
-	// this.role = role;
-	// }
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", pass=" + pass + ", email=" + email + /*", role=" + role + */"]";
+		return "User [id=" + id + ", name=" + name + ", pass=" + pass + ", email=" + email + ", role=" + role + "]";
 	}
 
 }

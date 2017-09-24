@@ -34,7 +34,6 @@ public class WelcomeController {
 		List<User> users = userJpaRepository.findAll();
 
 		users.forEach(user -> logger.info(user.toString()));
-		System.out.println(users);
 
 		model.addAttribute("user", users);
 		return "welcome";
