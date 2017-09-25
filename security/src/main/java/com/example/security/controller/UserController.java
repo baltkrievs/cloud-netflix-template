@@ -5,10 +5,9 @@ import com.example.security.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -21,22 +20,19 @@ import java.util.List;
  * ========================================
  * Когда я начинал это писать, только Бог и я понимали, что я делаю. Сейчас остался только Бог...
  */
-@Controller
-public class WelcomeController {
+@RestController
+public class UserController {
 
-	private static final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserJpaRepository userJpaRepository;
 
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String welcome(Model model) {
+	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = "application/json")
+	public List<User> users() {
 		List<User> users = userJpaRepository.findAll();
-
 		users.forEach(user -> logger.info(user.toString()));
-
-		model.addAttribute("user", users);
-		return "welcome";
+		return users;
 	}
 
 }
