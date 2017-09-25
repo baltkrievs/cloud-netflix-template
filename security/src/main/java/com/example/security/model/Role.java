@@ -1,5 +1,7 @@
 package com.example.security.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -17,8 +19,9 @@ public class Role {
 	@Id
 	private Integer id;
 	private String name;
-	@OneToOne(mappedBy = "role")
+	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
+	@JsonIgnore
 	private User user;
 
 	public Integer getId() {

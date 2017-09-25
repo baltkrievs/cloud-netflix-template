@@ -19,8 +19,7 @@ public class User {
 	private String name;
 	private String pass;
 	private String email;
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private Role role;
 
 	public Integer getId() {
