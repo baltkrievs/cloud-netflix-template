@@ -1,8 +1,7 @@
-package com.example.security.dao;
+package com.example.security.repository;
 
+import com.example.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.example.security.model.Role;
 
 /**
  * Created by Labotsky A.V. on 9/23/17.
@@ -13,5 +12,6 @@ import com.example.security.model.Role;
  * ========================================
  * Когда я начинал это писать, только Бог и я понимали, что я делаю. Сейчас остался только Бог...
  */
-public interface RoleUserJpaRepository extends JpaRepository<Role, Integer> {
-}
+public interface UserRepository extends JpaRepository<User, Long> {
+	User findByUsername(String username);
+}  

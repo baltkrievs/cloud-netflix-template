@@ -2,7 +2,11 @@ package com.example.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.Set;
 
 /**
  * Created by Labotsky A.V. on 9/23/17.
@@ -19,10 +23,9 @@ public class Role {
 	@Id
 	private Integer id;
 	private String name;
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
+	@ManyToMany(mappedBy = "roles")
 	@JsonIgnore
-	private User user;
+	private Set<User> users;
 
 	public Integer getId() {
 		return id;
@@ -40,12 +43,12 @@ public class Role {
 		this.name = name;
 	}
 
-	public User getUser() {
-		return user;
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 	@Override

@@ -16,10 +16,6 @@ spring:
       show_sql: true
       use_sql_comments: true
       format_sql: true
-#  mvc:
-#    view:
-#      prefix: /WEB-INF/views/
-#      suffix: .jsp
   h2:
     console:
       enabled: true

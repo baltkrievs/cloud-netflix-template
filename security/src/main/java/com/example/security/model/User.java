@@ -1,6 +1,9 @@
 package com.example.security.model;
 
+import org.apache.commons.lang.StringUtils;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Labotsky A.V. on 9/23/17.
@@ -16,11 +19,13 @@ import javax.persistence.*;
 public class User {
 	@Id
 	private Integer id;
-	private String name;
-	private String pass;
+	private String username;
+	private String password;
+	private String passwordConfirm;
 	private String email;
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-	private Role role;
+	@ManyToMany
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "idUser"), inverseJoinColumns = @JoinColumn(name = "idRole"))
+	private Set<Role> roles;
 
 	public Integer getId() {
 		return id;
@@ -28,14 +33,6 @@ public class User {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getEmail() {
@@ -46,25 +43,41 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPass() {
-		return pass;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
-	public Role getRole() {
-		return role;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", pass=" + pass + ", email=" + email + ", role=" + role + "]";
+		return "User [id=" + id + ", name=" + username + ", pass=" + password + ", passConfirm=" + passwordConfirm + ", email=" + email + ", role=" + StringUtils.join(roles, " ") + "]";
 	}
 
 }
