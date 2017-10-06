@@ -13,5 +13,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Когда я начинал это писать, только Бог и я понимали, что я делаю. Сейчас остался только Бог...
  */
 public interface UserRepository extends JpaRepository<User, Long> {
-	User findByUsername(String username);
 }  

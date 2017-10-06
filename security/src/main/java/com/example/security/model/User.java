@@ -21,10 +21,10 @@ public class User {
 	private Integer id;
 	private String username;
 	private String password;
-	private String passwordConfirm;
+	private String passwordconfirm;
 	private String email;
 	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "idUser"), inverseJoinColumns = @JoinColumn(name = "idRole"))
+	@JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "iduser"), inverseJoinColumns = @JoinColumn(name = "idrole"))
 	private Set<Role> roles;
 
 	public Integer getId() {
@@ -67,17 +67,17 @@ public class User {
 		this.password = password;
 	}
 
-	public String getPasswordConfirm() {
-		return passwordConfirm;
+	public String getPasswordconfirm() {
+		return passwordconfirm;
 	}
 
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
+	public void setPasswordconfirm(String passwordconfirm) {
+		this.passwordconfirm = passwordconfirm;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + username + ", pass=" + password + ", passConfirm=" + passwordConfirm + ", email=" + email + ", role=" + StringUtils.join(roles, " ") + "]";
+		return "User [id=" + id + ", name=" + username + ", pass=" + password + ", passconfirm=" + passwordconfirm + ", email=" + email + ", role=" + StringUtils.join(roles, " ") + "]";
 	}
 
 }

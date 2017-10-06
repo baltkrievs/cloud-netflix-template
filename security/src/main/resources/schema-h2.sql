@@ -2,7 +2,7 @@ CREATE TABLE USERS (
   id              INTEGER PRIMARY KEY,
   username        VARCHAR(30),
   password        VARCHAR(30),
-  passwordConfrim VARCHAR(30),
+  passwordconfirm VARCHAR(30),
   email           VARCHAR(50)
 );
 
@@ -12,6 +12,6 @@ CREATE TABLE ROLES (
 );
 
 CREATE TABLE USER_ROLE (
-  idUser INTEGER,
-  idRole INTEGER
+  iduser INTEGER,
+  idrole INTEGER
 );
