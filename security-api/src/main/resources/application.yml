@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: security-api
+  datasource:
+    url: jdbc:h2:mem:example;DB_CLOSE_DELAY=-1
+    platform: h2
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  properties:
+    hibernate:
+      show_sql: true
+      use_sql_comments: true
+      format_sql: true
+  h2:
+    console:
+      enabled: true
+
+h2:
+  console:
+    enabled: true
+    path: /console
+    settings:
+      trace: false
+      web-allow-others: false
+
+server:
+  port: 9992
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+security:
+  sessions: stateless
+  user:
+    password: none
+  oauth2:
+    resource:
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAimUKhvBhsoeSM3HkIOP/Y3RXjvonBlZnLj8oO92TyAKG53lmAoK0wZ5MTZPsfrOz2Z7CeAp6mPhUANX2RUoFwVzG7rJmgWyqGmGFNBmtYL+uVqQ80TzWi5zyzXTxgVMWiCqqw/u4AeE1qhN8chnGwhUBnpgPAPd8v57mIwg0n5JxjdYe7pgHlpvt8ZXTXd1KBxB5K7WjNlCfMf75ZEeBaplxsSfJUwKbnHQKWcY3NnpjkVR8y4jviAbkOHmGMaliM7fcsLzbosBUPDQuNlvYdjPBRfH6MMPeXRW6On3u0Um9wIYmkQS+AEgHCq4UuLOnTTqqxnGkwFYeMAAXmRyMtQIDAQAB
+          -----END PUBLIC KEY-----
